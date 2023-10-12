@@ -10,12 +10,21 @@ const creationOfDivs = function () {
     h3ForDivs.innerText = i + 1;
   }
 };
-const randomNumberSorted = [];
+let randomNumberSorted = [];
+let randomNumber;
 const randomNumberCreation = () => {
-  let randomNumber;
-  randomNumber = Math.ceil(Math.random() * 76);
-
-  return randomNumber;
+  do {
+    randomNumber = Math.ceil(Math.random() * 76);
+    if (randomNumberSorted.includes(randomNumber) === false) {
+      randomNumberSorted.push(randomNumber);
+      console.log(randomNumber);
+      console.log(randomNumberSorted);
+      return randomNumber;
+    }
+  } while (
+    randomNumberSorted.includes(randomNumber) ||
+    randomNumberSorted.length !== 76
+  );
 };
 
 window.addEventListener("DOMContentLoaded", () => {
